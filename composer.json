@@ -1,0 +1,21 @@
+{
+  "name": "antonacc/playlist-scraper",
+  "description": "Scrape (parse, grab, collect) music playlists",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anton Acc",
+      "email": "antonxacc@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/console": "^5.4",
+    "guzzlehttp/guzzle": "^7.4",
+    "chrome-php/chrome": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}
