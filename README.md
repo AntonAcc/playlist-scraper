@@ -1,6 +1,10 @@
 Music Playlist Scraper
 ======================
 
+Clone repository
+-----------------------------------
+git clone https://github.com/AntonAcc/playlist-scraper.git
+
 Build playlist-scraper docker image
 -----------------------------------
 docker build -t playlist-scraper .
@@ -8,6 +12,7 @@ docker build -t playlist-scraper .
 Prepare output dir
 ------------------
 sudo mkdir /var/playlist_scraper_output
+
 sudo chmod 777 -R /var/playlist_scraper_output
 
 Manual run
