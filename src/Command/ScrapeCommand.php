@@ -2,7 +2,6 @@
 
 namespace App\Command;
 
-use HeadlessChromium\Page;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -58,9 +57,9 @@ class ScrapeCommand extends Command
             try {
                 // TODO: Move browser creation out from foreach. Now it leads to errors.
                 $browserFactory = new BrowserFactory("/usr/bin/google-chrome");
-                $browser = $browserFactory->createBrowser(['keepAlive' => true]);
+                $browser = $browserFactory->createBrowser();
                 $page = $browser->createPage();
-                $page->navigate(sprintf('https://www.rockradio.com/%s', $radioKey))->waitForNavigation(Page::LOAD, 10000);
+                $page->navigate(sprintf('https://www.rockradio.com/%s', $radioKey));
 
                 $page->waitUntilContainsElement('.play-button-component');
                 $page->mouse()->find('.play-button-component')->click();

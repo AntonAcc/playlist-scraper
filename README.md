@@ -40,6 +40,18 @@ sudo bash -c 'echo "*/3 * * * * root docker run -u www-data --privileged --rm -t
     > /etc/cron.d/playlist-scraper'
 ```
 
+Develop
+-------
+```bash
+docker build -t playlist-scraper-dev .
+sudo mkdir output
+sudo chmod 777 -R output
+docker run -u www-data --privileged --rm -t --name playlist-scraper-dev \
+    -v $(pwd):/app playlist-scraper-dev bash -c "while true; do sleep 1; done;"
+docker exec -it playlist-scraper-dev bash    
+/app/bin/console app:scrape
+```
+
 Contributing
 ------------
 You are able to create any pull request and ask for merging it
