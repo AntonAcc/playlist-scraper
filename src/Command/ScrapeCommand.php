@@ -62,7 +62,7 @@ class ScrapeCommand extends Command
                 $page->navigate(sprintf('https://www.rockradio.com/%s', $radioKey));
 
                 $page->waitUntilContainsElement('.play-button-component');
-                $page->mouse()->find('.play-button-component')->click();
+                $page->mouse()?->find('.play-button-component')->click();
                 $page->waitUntilContainsElement('.artist-name');
 
                 $evaluation = $page->evaluate('document.querySelector(".artist-name").innerHTML');
@@ -71,13 +71,13 @@ class ScrapeCommand extends Command
                 $track = $evaluation->getReturnValue();
                 $output->writeln(sprintf('Radio %s: %s - %s', $radioName, $artist, $track));
 
-                $file = fopen(sprintf('/app/output/%s.txt', $radioKey), 'a');
-                fputs($file, sprintf("%s\t%s%s", $artist, $track, PHP_EOL));
+                $file = fopen(sprintf('/app/output/%s.txt', $radioKey), 'ab');
+                fwrite($file, sprintf("%s\t%s%s", $artist, $track, PHP_EOL));
                 fclose($file);
             } catch (\Throwable $e) {
                 $output->writeln(sprintf('Radio %s: [Error] %s', $radioName, $e->getMessage()));
             } finally {
-                $browser->close();
+                $browser?->close();
             }
         }
 

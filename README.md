@@ -4,6 +4,11 @@ Music Playlist Scraper
 Installation
 ------------
 
+Setup managing Docker as a non-root user (Optional)
+-----------------------------------
+
+https://docs.docker.com/engine/install/linux-postinstall/
+
 Clone repository
 -----------------------------------
 ```bash

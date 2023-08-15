@@ -1,4 +1,4 @@
-FROM php:latest
+FROM php:8.1
 COPY . /app
 WORKDIR /app
 
@@ -13,7 +13,7 @@ RUN docker-php-ext-install sockets
 RUN apt-get install -y wget
 # Install Chrome dependencies
 RUN apt-get install -y -qq --no-install-recommends fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 \
-    libatspi2.0-0 libcairo2 libcups2 libgbm1 libgtk-3-0 libnss3 libpango-1.0-0 libxkbcommon0 xdg-utils
+    libatspi2.0-0 libcairo2 libcups2 libgbm1 libgtk-3-0 libnss3 libpango-1.0-0 libxkbcommon0 xdg-utils libu2f-udev libvulkan1
 # Install Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome-stable_current_amd64.deb
